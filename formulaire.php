@@ -31,12 +31,12 @@
             </div>
             <br>
             <div>
-                <input type="password" name="mdp" placeholder="password" required>
+                <input type="password" name="password" placeholder="password" required>
                 <label for="password"></label>
             </div>
             <br>
             <div>
-                <input type="submit" value="Submit">
+                <input type="submit" value="Submit" name="inscription">
             </div>
         </form>
     </div>

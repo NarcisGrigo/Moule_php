@@ -1,4 +1,5 @@
 <?php
+session_start();
 // inclure le fichier "utilisateur.php"
 require_once "utilisateur.php";
 
@@ -7,15 +8,18 @@ if (isset($_POST['inscription'])) {
     $nom = htmlspecialchars($_POST["nom"]);
     $prenom = htmlspecialchars($_POST["prenom"]);
     $email = htmlspecialchars($_POST["email"]);
-    $mdp = htmlspecialchars($_POST["mdp"]);
+    $password = htmlspecialchars($_POST["password"]);
 
-    $cryptedMdp = password_hash($mdp, PASSWORD_DEFAULT);
+    $cryptedMdp = password_hash($password, PASSWORD_DEFAULT);
 
     $user = new Utilisateur($nom, $prenom, $email, $cryptedMdp);
     $user->inscription();
 }
 
-// créer une instance de la classe "Utilisateur"
+if (isset($_POST['connexion'])) {
+    $email = htmlspecialchars($_POST["email"]);
+    $password = htmlspecialchars($_POST["password"]);
 
-
-// appélez la méthode "inscription" pour enregistrer les donnes dans bd
+    // appel de la méthode statique connexion
+    Utilisateur::connexion($email, $password);
+}
